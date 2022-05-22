@@ -24,72 +24,45 @@ int function_manager(char c, va_list arg)
  *Description: This function evaluate cases
  *Return: count of printed characters
  */
-int _printf(const char *format, ...)
+int _switch(char c, va_list arg)
 {
-	int count;
-	int total = 0;
-	va_list args;
-	int flag = 0;
+	int cont = 0;
 
-	if (format == NULL)
-		return (0);
-
-	va_start(args, format);
-	for (count = 0; *(format + count) != '\0'; count++)
+	switch (c)
 	{
-		if (format[count] == '%')
-		{
-			flag = 1;
-		}
-		else if (flag == 1)
-		{
-			flag = 0;
-			switch (format[count])
-			{
-				case 'c':
-					_putchar(va_arg(args, int));
-					total += 1;
-					break;
-				case 's':
-					total += _print_str(va_arg(args, char *));
-					break;
-				case '%':
-					_putchar('%');
-					total += 1;
-					break;
-				case 'd':
-					total += _print_int((long)(va_arg(args, int)));
-					break;
-				case 'i':
-					total += _print_int((long)(va_arg(args, int)));
-					break;
-				case 'b':
-					total += to_Binary(va_arg(args, int));
-					break;
-				case 'u':
-					total += _print_int(va_arg(args, unsigned int));
-					break;
-				case 'o':
-					total += to_Octal(va_arg(args, int));
-					break;
-				case 'x':
-					total += to_Hexa(va_arg(args, int));
-					break;
-				case 'X':
-					total += to_Hexa(va_arg(args, int));
-					break;
-				default:
-					_putchar('%');
-					_putchar(format[count]);
-					total += 2;
-			}
-		}
-		else
-		{
-			_putchar(format[count]);
-			total += 1;
-		}
+		case 'b':
+			cont += print_unsign(arg, 2);
+			break;
+		case 'c':
+			cont += print_character(arg);
+			break;
+		case 'd':
+		case 'i':
+			cont += print_sign(arg, 10);
+			break;
+		case 'o':
+			cont += print_unsign(arg, 8);
+			break;
+		case 'r':
+			cont += print_rev(arg);
+			break;
+		case 'R':
+			cont += print_rot13(arg);
+			break;
+		case 's':
+			cont += print_string(arg);
+			break;
+		case 'u':
+			cont += print_unsign(arg, 10);
+			break;
+		case 'x':
+			cont += print_base16_upper_lower(arg, "0123456789abcdef");
+			break;
+		case 'X':
+			cont += print_base16_upper_lower(arg, "0123456789ABCDEF");
+			break;
+		default:
+			cont = -1;
 	}
-	va_end(args);
-	return (total);
+	return (cont);
 }
