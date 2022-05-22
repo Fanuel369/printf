@@ -50,7 +50,7 @@ int loop_format(va_list arg, const char *string)
 				flag++;
 			} else
 			{
-				cont_fm = funct_mgr(aux, arg);
+				cont_fm = function_manager(aux, arg);
 				if (cont_fm >= 0 && cont_fm != -1)
 				{
 					i++;
@@ -95,17 +95,17 @@ int check_percent(int *flag, char aux)
 }
 
 /**
- * call_funct_mgr - call function manager
+ * call_function_manager - call function manager
  *@aux: character parameter
  *@arg: va_list arg
  *Description: This function call function manager
  *Return: num of characteres printed
  */
 
-int call_funct_mgr(char aux, va_list arg)
+int call_function_manager(char aux, va_list arg)
 {
 	int cont = 0;
 
-	cont = funct_mgr(aux, arg);
+	cont = function_manager(aux, arg);
 	return (cont);
 }
