@@ -10,15 +10,11 @@ int _strlen(char *s);
 int _printf(const char *format, ...);
 char *convert_to(char representation[], unsigned int num, int base);
 int function_manager(char c, va_list arg);
-int get_mods(char *str, param_func *func)
 int _switch(char c, va_list arg);
 int _printf(const char *format, ...);
 int print_character(va_list arg);
 int print_sign(va_list arg, int base);
 int print_unsign(va_list arg, int base);
-char *precision(char *str, param_func *func, va_list list);
-char *field_width(char *str, param_func *func, va_list list);
-int length_mod(char *str, param_func *func);
 int print_string(va_list arg);
 int print_ptr(va_list arg);
 int print_rot13(va_list arg);
@@ -28,5 +24,6 @@ int loop_format(va_list arg, const char *string);
 int call_function_manager(char aux, va_list arg);
 int check_percent(int *flag, char aux);
 int get_flag(char s, flags_t *f);
+int length_mod(char *str, param_func *func);
 
 #endif
