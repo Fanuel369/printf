@@ -22,9 +22,4 @@ int print_base16_upper_lower(va_list arg, char *representation);
 int loop_format(va_list arg, const char *string);
 int call_function_manager(char aux, va_list arg);
 int check_percent(int *flag, char aux);
-void _param(param *pp)
-int _mod1(const char *format, int i, param *pp)
-int _flags_1(const char *format, int i, param *pp)
-int _width(const char *format, int i, param *pp, va_list arg)
-int _precision(const char *format, int i, param *pp, va_list arg)
 #endif
